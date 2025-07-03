@@ -1,0 +1,25 @@
+Connexion SSH secure shell
+Système de connexion à distance, ne nécessite aucune interface graphique sur la machine sur laquelle on veut se connecter
+protocole qui permet une connexion un shell de manière sécurisé
+Système login password
+
+Protocole connexion à la rpi48 :
+###################################
+Dans un terminal :
+
+>: ping robotpi-48 (optionnel)
+
+>: ssh rpi48@robotpi-48
+
+>: Turbokenzo (password)
+
+la commande >: hostname -I 	nous donne l'adresse IP : 137.194.173.48
+
+on se connecte en ligne sur 137.194.173.48:8000 (interface de commande)
+
+On exécute le fichier webserver dans server
+
+>: cd server
+>: sudo python3 web_server.py
+
+Le véhicule se commande depuis l'interface de commande

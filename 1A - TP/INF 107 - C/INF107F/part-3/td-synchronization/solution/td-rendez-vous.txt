@@ -1,0 +1,12 @@
+init_rdv(alice_arrive, 0)
+init_rdv(bob_arrive, 0)
+
+rendez_vous (i_arrive, u_arrive):
+signal(i_arrive)
+wait(u_arrive)
+
+in alice :
+rendez_vous(alice, bob)
+
+in bob:
+rendez_vous(bob, alice)

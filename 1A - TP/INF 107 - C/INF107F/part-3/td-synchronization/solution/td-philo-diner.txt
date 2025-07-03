@@ -1,0 +1,16 @@
+for fork in 0 .. max_forks-1 loop
+   init_sem(forks[fork], 1)
+
+for philo in 0 .. max_forks-1 loop
+   left[philo] = philo
+   right[philo] = (philo+1) mod max_forks
+
+philosopher
+
+loop
+  wait(max(left[philo], right[philo])
+  wait(min(left[philo], right[philo])
+  eat
+  signal(max(left[philo], right[philo])
+  signal(min(left[philo], right[philo]) 
+  sleep

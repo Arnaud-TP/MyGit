@@ -1,0 +1,21 @@
+init_mutex(buffer, 1)
+init_sem(empty_slots, N)
+init_sem(full_slots, 0)
+
+
+
+producer
+
+wait(empty_slots)
+acquire(buffer)
+append_element_in_circular_buffer()
+release(buffer)
+signal(full_slots)
+
+consumer
+
+wait(full_slots)
+acquire(buffer)
+remove_element_in_circular_buffer()
+release(buffer)
+signal(empty_slots)

@@ -1,0 +1,23 @@
+
+unlink("vir_obj_file"); // Supprime le fichier vir_obj_file
+
+Ouverture de fichier :
+open("nom du fichier", O_RDWR | O_CREAT, 0644);
+// open("nom", type d'ouverture, permission);
+/*La permission s'indique avec un mod de 9 bits :
+Read
+Write   Pour le propriétaire
+X (execute)
+R
+W       Pour le groupe propriétaire
+X
+R
+W       Pour les autres
+X
+
+Ce mot de 9 bits peut s'indiquer en héxadécimal (0x1A4 pour 110100100)
+-> Paquet de 4 bits
+S'écrit aussi en base 8 : paquet de 3 bits
+
+/!\ Toujours indiquer le 0 devant pour insiquer la base
+*/

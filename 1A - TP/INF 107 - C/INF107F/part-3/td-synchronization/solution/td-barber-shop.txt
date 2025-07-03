@@ -1,0 +1,25 @@
+init_mutex(waiting_room, 1)
+init_rdv(client_enter_brushing, 0)
+init_rdv(client_leave_brushing, 0)
+init_rdv(barber, 0)
+
+client:
+
+acquire(waiting_room)
+if no room left
+   release(waiting_room)
+   leave
+take a seat
+release(waiting_room)
+rendez_vous(client_enter_brushing, barber)
+acquire(waiting_room)
+free a seat
+release(waiting_room)
+rendez_vous(client_leave_brushing, barber)
+leave
+
+barber
+loop
+  rendez_vous(barber, client_enter_brushing)
+  brush
+  rendez_vous(barber, client_leave_brushing)

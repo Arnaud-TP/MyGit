@@ -1,0 +1,38 @@
+init_mutex(bus_station, 1)
+init_rdv(passenger_aboard_bus, 0)
+init_rdv(passenger_in_station, 0)
+init_rdv(driver_ready_to_leave, 0)
+init_rdv(passenger_ready_to_leave, 0)
+
+
+bus driver
+
+acquire(bus_station)
+if (seats and passengers > 0)
+   decrease passengers
+   decrease seats
+   release(bus_station)
+   rendez_vous(passenger_aboard_bus, passenger_in_station)
+   rendez_vous(driver_ready_to_leave, passenger_ready_to_leave)
+else
+   release(bus_station)
+
+
+passenger
+
+acquire(bus_station)
+increment passengers
+release(bus_station)
+rendez_vous(passenger_in_station, passenger_aboard_bus)
+acquire(bus_station)
+if (seats and passengers > 0)
+   decrease attendees
+   decrease seats
+   new_passenger_boarding = true
+else   
+   new_passenger_boarding = false
+release(bus_station)
+if new_passenger_boarding
+   rendez_vous(passenger_aboard_bus, passenger_in_station)
+else
+   rendez_vous(passenger_ready_to_leave, driver_ready_to_leave)

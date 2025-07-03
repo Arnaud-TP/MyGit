@@ -1,0 +1,31 @@
+Connexion à la raspberry en ssh: se connecter à campusteleco et taper ssh "rpi48@robot-pi48", robot-pi48 correspond au nom de domaine 
+
+Deconnexion: "exit"
+
+Pour vérifier que qq chose est sur le réseau: "ping robotpi-48" par ex 
+
+Ouvrir un document: cat <nom_du_doc>
+
+Se connecter à git:
+Créer une clé privée et une publique: ssh-keygen -o -a 100 -t ed25519 -f .ssh/git -C "you@telecom-paris.fr"
+Copier la clé publique dans "ssh" dans git 
+Creer un fichier config dans .ssh avec le texte: 
+Host *
+  AddKeysToAgent yes
+  IdentitiesOnly yes
+
+Host gitlab.enst.fr
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/<le nom de votre clef privée>
+
+Taper: git config --global user.email "damien.pelissier@telecom-paris.fr"
+
+Dans le powershell taper: git clone git@gitlab.enst.fr:proj103/2324/gr10/teame.git qui permet de cloner le depot en local
+On a accès au git 
+
+git push permet d'actualiser des nouvelles données sur le git
+git pull permet de recuperer des données du git vers le local 
+
+Apres avoir modifié un fichier écrire: git commit -a -m "Message de commit" 
+--> -a permet de selectionner all et -m d'écrire le message 
+Puis git push
